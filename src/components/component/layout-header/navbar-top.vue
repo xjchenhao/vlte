@@ -303,7 +303,7 @@
 
 <script>
     export default {
-        name: '',
+        name: 'vlte-navbarTop',
         data () {
             return {}
         },
