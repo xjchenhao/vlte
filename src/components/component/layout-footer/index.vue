@@ -1,10 +1,7 @@
 <template>
     <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0.0
-    </div>
-        <strong>Copyright © 2017 <a href="http://www.xjchenhao.cn">xjchenhao</a>.</strong> All rights reserved.
-  </footer>
+        <slot></slot>
+    </footer>
 </template>
 
 <script>
