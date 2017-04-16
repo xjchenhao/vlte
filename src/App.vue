@@ -1,23 +1,30 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
-  </div>
+    <div id="app">
+        <v-header>
+            <navbar-logo></navbar-logo>
+            <navbar-top></navbar-top>
+        </v-header>
+        <router-view></router-view>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+    import jquery from '../node_modules/admin-lte/plugins/jQuery/jquery-2.2.3.min.js';
+    import bootstrap from '../node_modules/admin-lte/bootstrap/js/bootstrap.js';
+
+    import vHeader from './components/component/header/index.vue';
+    import navbarTop from './components/component/header/navbar-top.vue';
+    import navbarLogo from './components/component/header/navbar-logo.vue';
+
+    export default {
+        name: 'app',
+        components: {vHeader, navbarTop, navbarLogo}
+    }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    @import '../node_modules/admin-lte/bootstrap/css/bootstrap.css';
+    @import '../node_modules/admin-lte/dist/css/AdminLTE.css';
+    @import '../node_modules/admin-lte/dist/css/skins/_all-skins.css';
+    @import '../node_modules/font-awesome/css/font-awesome.css';
 </style>
