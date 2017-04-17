@@ -1,5 +1,5 @@
 <template>
-    <div class="hello">123</div>
+    <div class="hello">hello VueAdminLte</div>
 </template>
 
 <script>

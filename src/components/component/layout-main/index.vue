@@ -1,6 +1,11 @@
 <template>
+    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <slot></slot>
+        <!-- Main content -->
+        <section class="content">
+            <slot></slot>
+        </section>
+        <!-- /.content -->
     </div>
 </template>
 
