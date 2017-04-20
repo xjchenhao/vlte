@@ -9,16 +9,6 @@
         vTable
     } from '../components/component/vlte.js';
 
-    const dataSource = [{
-        name: '胡彦斌',
-        age: 32,
-        address: '西湖区湖底公园1号'
-    }, {
-        name: '胡彦祖',
-        age: 42,
-        address: '西湖区湖底公园1号'
-    }];
-
     const columns = [{
         title: '姓名',
         dataIndex: 'name'
@@ -44,6 +34,16 @@
                 </span>
             `
         })
+    }];
+
+    const dataSource = [{
+        name: '胡彦斌',
+        age: 32,
+        address: '西湖区湖底公园1号'
+    }, {
+        name: '胡彦祖',
+        age: 42,
+        address: '西湖区湖底公园1号'
     }];
 
     export default {

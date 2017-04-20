@@ -40,8 +40,8 @@
                 // 计算columns顺序
                 let columnsOrder = this.columns.map((obj) => {
                     return {
-                        key:obj.dataIndex,
-                        render:obj.render
+                        key: obj.dataIndex,
+                        render: obj.render
                     }
                 });
 
@@ -50,10 +50,10 @@
                     columnsOrder.forEach((columnsObj, index) => {
                         arr.push({
                             forKey: columnsObj.key + index,
-                            key:columnsObj.key,
-                            record:obj,
+                            key: columnsObj.key,
+                            record: obj,
                             value: obj[columnsObj.key],
-                            render:columnsObj.render
+                            render: columnsObj.render
                         });
                     });
                     listData.push({
@@ -65,15 +65,12 @@
                 return listData;
             }
         },
-        components:{
-          tdValue:{
-              name:'table-td-value',
-              props: ['data'],
-              mounted(){
-//                console.log(this.data)
-              },
-              template:'<div v-html="data.render?data.render(data.key,data.record):data.value"></div>'
-          }
+        components: {
+            tdValue: {
+                name: 'table-td-value',
+                props: ['data'],
+                template: '<div v-html="data.render?data.render(data.key,data.record):data.value"></div>'
+            }
         },
         created(){
         }
