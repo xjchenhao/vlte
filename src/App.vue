@@ -57,25 +57,12 @@
                 iconFont:'fa fa-home'
             },{
                 title:'tables',
-                href:'javascript:;',
-                iconFont:'fa fa-table',
-                child:[{
-                    title:'Simple tables',
-                    href:'javascript:;'
-                },{
-                    title:'二级菜单3',
-                    href:'javascript:;',
-                    child:[{
-                        title:'三级菜单1',
-                        href:'/tables'
-                    },{
-                        title:'三级菜单2',
-                        href:'javascript:;'
-                    },{
-                        title:'三级菜单3',
-                        href:'javascript:;'
-                    }]
-                }]
+                href:'/tables',
+                iconFont:'fa fa-table'
+            },{
+                title:'pagination',
+                href:'/pagination',
+                iconFont:'fa fa-table'
             }];
         }
     }
