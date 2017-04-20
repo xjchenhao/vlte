@@ -20,9 +20,13 @@
 </template>
 
 <script>
+//    window.AdminLTEOptions = {
+//        enableControlTreeView: false
+//    };
+
     import jquery from '../node_modules/admin-lte/plugins/jQuery/jquery-2.2.3.min.js';
     import bootstrap from '../node_modules/admin-lte/bootstrap/js/bootstrap.js';
-    import app from '../node_modules/admin-lte/dist/js/app.js';
+//    import app from '../node_modules/admin-lte/dist/js/app.js';
 
     import {
         vHeader,
@@ -48,47 +52,30 @@
 
             // 侧栏目录数据
             this.sidebarMemuData = [{
-                title:'菜单1',
-                href:'#',
-                iconFont:'fa fa-dashboard',
-                child:[{
-                    title:'二级菜单1',
-                    href:'#'
-                },{
-                    title:'二级菜单2',
-                    href:'#'
-                },{
-                    title:'二级菜单3',
-                    href:'#'
-                }]
+                title:'主页',
+                href:'/',
+                iconFont:'fa fa-home'
             },{
-                title:'菜单2',
-                href:'#',
-                iconFont:'fa fa-dashboard',
+                title:'tables',
+                href:'javascript:;',
+                iconFont:'fa fa-table',
                 child:[{
-                    title:'二级菜单1',
-                    href:'#'
-                },{
-                    title:'二级菜单2',
-                    href:'#'
+                    title:'Simple tables',
+                    href:'javascript:;'
                 },{
                     title:'二级菜单3',
-                    href:'#',
+                    href:'javascript:;',
                     child:[{
                         title:'三级菜单1',
-                        href:'#'
+                        href:'/tables'
                     },{
                         title:'三级菜单2',
-                        href:'#'
+                        href:'javascript:;'
                     },{
                         title:'三级菜单3',
-                        href:'#'
+                        href:'javascript:;'
                     }]
                 }]
-            },{
-                title:'菜单3',
-                href:'#',
-                iconFont:'fa fa-dashboard'
             }];
         }
     }

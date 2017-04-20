@@ -22,17 +22,46 @@
         data () {
             return {}
         },
+        created(){
+            let _this=this;
+
+            this.$root.$router.beforeEach((to, from, next) => {
+                console.log(to.path);
+                if (to.path == '' || to.path == '#' || to.path == '/#' || to.path == 'javascript:;') {
+                    next(false);
+                }
+
+//                $('.sidebar-menu li').removeClass('active');
+//                $('.sidebar-menu ul').removeClass('menu-open');
+//
+//                _this.menuState();
+                next();
+            });
+        },
         mounted(){
-            console.log(this.title);
-            console.log(this.data);
+            this.menuState();
+        },
+        methods: {
+            menuState: function () {
+                let url = window.location.href;
+
+                //todo: 根据url折叠侧栏菜单
+
+//                $('.sidebar-menu ul a').filter(function () {
+//
+//                    return this.href == url.split('?')[0];
+//                })
+//                    .addClass('active')
+//                    .parents('li').addClass('active');
+            }
         },
         components: {
             subMenu: {
-                name:'sub-menu',
+                name: 'sub-menu',
                 props: ['item'],
                 template: '\
-                <li class="treeview">\
-                    <a :href="item.href">\
+                <router-link tag="li" :to="item.href" active-class="active"  class="treeview" exact>\
+                    <a>\
                         <i :class="item.iconFont"></i> <span>{{item.title}}</span>\
                         <span class="pull-right-container" v-if="item.child">\
                             <i class="fa fa-angle-left pull-right"></i>\
@@ -41,7 +70,7 @@
                     <ul class="treeview-menu" v-if="item.child">\
                         <sub-menu v-for="item in item.child" :item="item"></sub-menu>\
                     </ul>\
-                </li>'
+                </router-link>'
             }
         }
     }
