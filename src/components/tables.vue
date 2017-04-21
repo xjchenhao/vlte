@@ -1,12 +1,21 @@
 <template>
     <div class="box">
-        <v-table :columns="columns" :dataSource="dataSource"></v-table>
+        <div class="box-header with-border">
+            <h3 class="box-title">Bordered Table</h3>
+        </div>
+        <div class="box-body">
+            <v-table :columns="columns" :dataSource="dataSource"></v-table>
+        </div>
+        <div class="box-footer clearfix">
+            <v-pagination :current=1 :total=100></v-pagination>
+        </div>
     </div>
 </template>
 
 <script>
     import {
-        vTable
+        vTable,
+        vPagination
     } from '../components/component/vlte.js';
 
     const columns = [{
@@ -48,7 +57,7 @@
 
     export default {
         name: '',
-        components: {vTable},
+        components: {vTable,vPagination},
         data () {
             return {
                 columns,

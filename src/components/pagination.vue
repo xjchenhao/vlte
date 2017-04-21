@@ -3,7 +3,7 @@
         <v-pagination
                 :current=current
                 :onChange=onChange
-                :total=85>
+                :total=total>
         </v-pagination>
     </div>
 </template>
@@ -19,14 +19,15 @@
         data () {
             return {
                 current: 1,
-
-                onChange: function (page) {
-                    this.current = page
-                }
+                total:85
             }
         },
         computed: {},
-        methods: {},
+        methods: {
+            onChange: function (page) {
+                this.current = page
+            }
+        },
         created(){
         }
     }
