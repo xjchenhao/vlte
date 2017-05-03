@@ -9,13 +9,17 @@
         <div class="box-footer clearfix">
             <v-pagination :current=1 :total=100></v-pagination>
         </div>
+        <v-button>默认按钮</v-button>
+        <v-button type="primary">主要按钮</v-button>
+        <v-button type="text">文字按钮</v-button>
     </div>
 </template>
 
 <script>
     import {
         vTable,
-        vPagination
+        vPagination,
+        vButton
     } from '../components/component/vlte.js';
 
     const columns = [{
@@ -57,7 +61,7 @@
 
     export default {
         name: '',
-        components: {vTable,vPagination},
+        components: {vTable,vPagination,vButton},
         data () {
             return {
                 columns,
