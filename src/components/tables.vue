@@ -1,71 +1,59 @@
 <template>
     <div class="box">
         <div class="box-header with-border">
-            <h3 class="box-title">Bordered Table</h3>
+            <h3 class="box-title">基础表格</h3>
         </div>
         <div class="box-body">
-            <v-table :columns="columns" :dataSource="dataSource"></v-table>
+            <v-table
+                    :data="tableData"
+                    style="width: 100%">
+                <v-table-column
+                        prop="date"
+                        label="日期"
+                        width="180">
+                </v-table-column>
+                <v-table-column
+                        prop="name"
+                        label="姓名"
+                        width="180">
+                </v-table-column>
+                <v-table-column
+                        prop="address"
+                        label="地址">
+                </v-table-column>
+            </v-table>
         </div>
-        <div class="box-footer clearfix">
-            <v-pagination :current=1 :total=100></v-pagination>
-        </div>
-        <v-button>默认按钮</v-button>
-        <v-button type="primary">主要按钮</v-button>
-        <v-button type="text">文字按钮</v-button>
     </div>
 </template>
 
 <script>
     import {
-        vTable,
-        vPagination,
-        vButton
+        Table,
+        TableColumn,
     } from '../components/component/vlte.js';
-
-    const columns = [{
-        title: '姓名',
-        dataIndex: 'name'
-    }, {
-        title: '年龄',
-        dataIndex: 'age'
-    }, {
-        title: '住址',
-        dataIndex: 'address'
-    }, {
-        title: 'action',
-        dataIndex: 'action',
-        render: ((text, record) => {
-            return `
-                <span>
-                  <a href="#">${text} 一 ${record.name}</a>
-                    <span className="ant-divider" />
-                  <a href="#">Delete</a>
-                    <span className="ant-divider" />
-                  <a href="#" className="ant-dropdown-link">
-                    More actions <Icon type="down" />
-                  </a>
-                </span>
-            `
-        })
-    }];
-
-    const dataSource = [{
-        name: '胡彦斌',
-        age: 32,
-        address: '西湖区湖底公园1号'
-    }, {
-        name: '胡彦祖',
-        age: 42,
-        address: '西湖区湖底公园1号'
-    }];
 
     export default {
         name: '',
-        components: {vTable,vPagination,vButton},
+        components: {vTable: Table, vTableColumn: TableColumn},
         data () {
             return {
-                columns,
-                dataSource
+                tableData: [{
+                    date: '2016-05-02',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1518 弄'
+                }, {
+                    date: '2016-05-04',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1517 弄'
+                }, {
+                    date: '2016-05-01',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1519 弄'
+                }, {
+                    date: '2016-05-03',
+                    name: '王小虎',
+                    address: '上海市普陀区金沙江路 1516 弄'
+                }]
             }
         },
         created(){
