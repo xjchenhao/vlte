@@ -6,7 +6,7 @@
             <!-- Sidebar user panel -->
             <div class="user-panel">
                 <div class="pull-left image">
-                    <img src="~node_modules/admin-lte/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    <img :src="imgUser2" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
                     <p>Alexander Pierce</p>
@@ -32,10 +32,14 @@
 </template>
 
 <script>
+    import imgUser2 from 'admin-lte/dist/img/user2-160x160.jpg';
+
     export default {
         name: 'vlte-sidebar',
         data () {
-            return {}
+            return {
+                imgUser2
+            }
         },
         mounted(){
         }

@@ -27,7 +27,7 @@
                                     <li><!-- start message -->
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="~node_modules/admin-lte/dist/img/user2-160x160.jpg"
+                                                <img :src="imgUser2"
                                                      class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
@@ -42,7 +42,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="~node_modules/admin-lte/dist/img/user3-128x128.jpg"
+                                                <img :src="imgUser3"
                                                      class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
@@ -56,7 +56,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="~node_modules/admin-lte/dist/img/user4-128x128.jpg"
+                                                <img :src="imgUser4"
                                                      class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
@@ -70,7 +70,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="~node_modules/admin-lte/dist/img/user3-128x128.jpg"
+                                                <img :src="imgUser3"
                                                      class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
@@ -84,7 +84,7 @@
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
-                                                <img src="~node_modules/admin-lte/dist/img/user4-128x128.jpg"
+                                                <img :src="imgUser4"
                                                      class="img-circle" alt="User Image">
                                             </div>
                                             <h4>
@@ -250,14 +250,14 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="~node_modules/admin-lte/dist/img/user2-160x160.jpg" class="user-image"
+                        <img :src="imgUser2" class="user-image"
                              alt="User Image">
                         <span class="hidden-xs">Alexander Pierce</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="~node_modules/admin-lte/dist/img/user2-160x160.jpg" class="img-circle"
+                            <img :src="imgUser2" class="img-circle"
                                  alt="User Image">
 
                             <p>
@@ -302,10 +302,18 @@
 </template>
 
 <script>
+    import imgUser2 from 'admin-lte/dist/img/user2-160x160.jpg';
+    import imgUser3 from 'admin-lte/dist/img/user3-128x128.jpg';
+    import imgUser4 from 'admin-lte/dist/img/user4-128x128.jpg';
+
     export default {
         name: 'vlte-navbarTop',
         data () {
-            return {}
+            return {
+                imgUser2,
+                imgUser3,
+                imgUser4
+            }
         },
         methods:{
             toggleSidebar(){

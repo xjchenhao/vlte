@@ -21,6 +21,10 @@
 </template>
 
 <script>
+    import 'admin-lte/bootstrap/css/bootstrap.css';
+    import 'admin-lte/dist/css/AdminLTE.css';
+    import 'admin-lte/dist/css/skins/_all-skins.css';
+    import 'font-awesome/css/font-awesome.css';
     //    window.AdminLTEOptions = {
     //        enableControlTreeView: false
     //    };
@@ -70,8 +74,4 @@
 </script>
 
 <style>
-    @import '../node_modules/admin-lte/bootstrap/css/bootstrap.css';
-    @import '../node_modules/admin-lte/dist/css/AdminLTE.css';
-    @import '../node_modules/admin-lte/dist/css/skins/_all-skins.css';
-    @import '../node_modules/font-awesome/css/font-awesome.css';
 </style>
