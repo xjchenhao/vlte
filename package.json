@@ -1,9 +1,10 @@
 {
   "name": "vlte",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AdminLTE Vue.js Component library Edit",
   "author": "Add topics",
-  "private": true,
+  "private": false,
+  "main": "./src/components/component/vlte.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
