@@ -4,37 +4,33 @@
             <h3 class="box-title">基础表格</h3>
         </div>
         <div class="box-body">
-            <v-table
+            <el-table
                     :data="tableData"
                     style="width: 100%">
-                <v-table-column
+                <el-table-column
                         prop="date"
                         label="日期"
                         width="180">
-                </v-table-column>
-                <v-table-column
+                </el-table-column>
+                <el-table-column
                         prop="name"
                         label="姓名"
                         width="180">
-                </v-table-column>
-                <v-table-column
+                </el-table-column>
+                <el-table-column
                         prop="address"
                         label="地址">
-                </v-table-column>
-            </v-table>
+                </el-table-column>
+            </el-table>
         </div>
     </div>
 </template>
 
 <script>
-    import {
-        Table,
-        TableColumn,
-    } from '../components/component/vlte.js';
 
     export default {
         name: '',
-        components: {vTable: Table, vTableColumn: TableColumn},
+        components: {},
         data () {
             return {
                 tableData: [{

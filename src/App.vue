@@ -13,11 +13,10 @@
         <v-footer>
             <div class="pull-right hidden-xs">
                 <b>Version</b> 1.0.0
-
             </div>
             <strong>Copyright © 2017 <a href="http://www.xjchenhao.cn">xjchenhao</a>.</strong> All rights reserved.
-
         </v-footer>
+
     </div>
 </template>
 
@@ -40,10 +39,10 @@
             vHeader: Layout.header,
             vNavbarLogo: Layout.header.logo,
             vNavbarTop: Layout.header.top,
-            vSidebar:Layout.sidebar,
-            vSidebarMenu:Layout.sidebar.menu,
-            vMain:Layout.main,
-            vFooter:Layout.footer,
+            vSidebar: Layout.sidebar,
+            vSidebarMenu: Layout.sidebar.menu,
+            vMain: Layout.main,
+            vFooter: Layout.footer,
         },
         data () {
             return {
