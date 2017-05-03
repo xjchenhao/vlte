@@ -1,70 +1,17 @@
 import 'element-ui/lib/theme-default/index.css'
 
-export { default as vHeader } from './layout-header';
-export { default as vSidebar } from './layout-sidebar';
-export { default as vMain } from './layout-main';
-export { default as vFooter } from './layout-footer';
+import {
+    header,
+    sidebar,
+    main,
+    footer
+}from './layout';
 
-export {
-    Pagination,
-    Dialog,
-    Autocomplete,
-    Dropdown,
-    DropdownMenu,
-    DropdownItem,
-    Menu,
-    Submenu,
-    MenuItem,
-    MenuItemGroup,
-    Input,
-    InputNumber,
-    Radio,
-    RadioGroup,
-    RadioButton,
-    Checkbox,
-    CheckboxGroup,
-    Switch,
-    Select,
-    Option,
-    OptionGroup,
-    Button,
-    ButtonGroup,
-    Table,
-    TableColumn,
-    DatePicker,
-    TimeSelect,
-    TimePicker,
-    Popover,
-    Tooltip,
-    Breadcrumb,
-    BreadcrumbItem,
-    Form,
-    FormItem,
-    Tabs,
-    TabPane,
-    Tag,
-    Tree,
-    Alert,
-    Slider,
-    Icon,
-    Row,
-    Col,
-    Upload,
-    Progress,
-    Spinner,
-    Badge,
-    Card,
-    Rate,
-    Steps,
-    Step,
-    Carousel,
-    Scrollbar,
-    CarouselItem,
-    Collapse,
-    CollapseItem,
-    Cascader,
-    ColorPicker,
-    Loading,
-    MessageBox,
-    Message
-} from 'element-ui'
+export let Layout={
+    header,
+    sidebar,
+    main,
+    footer
+};
+
+export * from 'element-ui'
