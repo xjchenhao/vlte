@@ -16,7 +16,6 @@
             </div>
             <strong>Copyright © 2017 <a href="http://www.xjchenhao.cn">xjchenhao</a>.</strong> All rights reserved.
         </v-footer>
-
     </div>
 </template>
 
@@ -54,21 +53,64 @@
             }
         },
         created(){
-
             // 侧栏目录数据
-            this.sidebarMemuData = [{
-                title: '主页',
-                href: '/',
-                iconFont: 'fa fa-home'
-            }, {
-                title: 'tables',
-                href: '/tables',
-                iconFont: 'fa fa-table'
-            }, {
-                title: 'pagination',
-                href: '/pagination',
-                iconFont: 'fa fa-table'
-            }];
+//            this.sidebarMemuData = [{
+//                title: '主页',
+//                href: '/',
+//                iconFont: 'fa fa-home'
+//            }, {
+//                title: 'tables',
+//                href: '/tables',
+//                iconFont: 'fa fa-table'
+//            }, {
+//                title: 'pagination',
+//                href: '/pagination',
+//                iconFont: 'fa fa-table'
+//            }];
+
+          this.sidebarMemuData = [{
+            title:'菜单1',
+            href:'',
+            iconFont:'fa fa-dashboard',
+            child:[{
+              title:'二级菜单1',
+              href:'/one'
+            },{
+              title:'二级菜单2',
+              href:'/two'
+            },{
+              title:'二级菜单3',
+              href:'/three'
+            }]
+          },{
+            title:'菜单2',
+            href:'',
+            iconFont:'fa fa-dashboard',
+            child:[{
+              title:'二级菜单1',
+              href:'/a'
+            },{
+              title:'二级菜单2',
+              href:'/b'
+            },{
+              title:'二级菜单3',
+              href:'#',
+              child:[{
+                title:'三级菜单1',
+                href:'/aa'
+              },{
+                title:'三级菜单2',
+                href:'/bb'
+              },{
+                title:'三级菜单3',
+                href:'/cc'
+              }]
+            }]
+          },{
+            title:'菜单3',
+            href:'/other',
+            iconFont:'fa fa-dashboard'
+          }];
         }
     }
 </script>
