@@ -17,9 +17,9 @@
                 name: 'sub-menu',
                 props: ['item','nav','index','navSlide'],
                 template: '\
-                      <li v-if="item.child" @click="navSlide(index)" :class="[{active: nav[index].hasSub},treeview]">\
+                      <li v-if="item.child" @click="navSlide(index)" :class="[{active: nav[index].hasSub}]">\
                           <a href="javascript:;">\
-                              <i :class="item.iconFont"></i> <span>{{item.title}}</span>\
+                              <i :class="item.iconFont"></i> <span>{{item.title}}{{nav[index].hasSub}}</span>\
                               <span class="pull-right-container" v-if="item.child">\
                                   <i class="fa fa-angle-left pull-right"></i>\
                               </span>\
@@ -30,7 +30,7 @@
                       </li>\
                       <li v-else class="treeview">\
                           <router-link :to="item.href">\
-                              <i :class="item.iconFont"></i><span>{{item.title}}</span>\
+                              <i :class="item.iconFont"></i><span>{{item.title}}{{nav[index].hasSub}}</span>\
                               <span class="pull-right-container" v-if="item.child">\
                                   <i class="fa fa-angle-left pull-right"></i>\
                               </span>\
@@ -40,26 +40,22 @@
         },
         data () {
           return {
+              nav:{}
           };
         },
         methods: {
         	  navSlide: function(index){
-        	  	  this.nav[index].hasSub = !this.nav[index].hasSub;
+                  let nav=this.nav[index];
+                  nav.hasSub=!nav.hasSub;
+                  this.$set(this.nav, index, nav)
             }
         },
-        computed:{
-            nav(){
-                let data = this.data;
-                this.data.map((obj)=>{
-                  obj.hasSub = false;
-                });
-    //          this.data=data;
-                console.log(data)
-                this.someObject = Object.assign({}, this.someObject, {
-                  data:data
-                });
-                return data;
-            }
+        created(){
+            let data = this.data;
+            data.map((obj)=>{
+                obj.hasSub = false;
+            });
+            this.nav=data;
         }
     }
 </script>
