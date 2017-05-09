@@ -1,7 +1,7 @@
 <template>
     <ul class="sidebar-menu">
         <li class="header">{{title}}</li>
-        <sub-menu v-for="(item, index) in data" :item="item" :index="index" :nav="nav" :navSlide="navSlide"></sub-menu>
+        <sub-menu v-for="(item,index) in data" :key="item.id" :item="item" :index="index" :setnav="setnav" :navSlide="navSlide"></sub-menu>
     </ul>
 </template>
 
@@ -15,22 +15,22 @@
         components: {
             subMenu: {
                 name: 'sub-menu',
-                props: ['item','nav','index','navSlide'],
+                props: ['item','index','setnav','navSlide'],
                 template: '\
-                      <li v-if="item.child" @click="navSlide(index)" :class="[{active: nav[index].hasSub}]">\
+                      <li v-if="item.child" @click="navSlide(index)" :class="{active: setnav[index].hasSub}">\
                           <a href="javascript:;">\
-                              <i :class="item.iconFont"></i> <span>{{item.title}}{{nav[index].hasSub}}</span>\
+                              <i :class="item.iconFont"></i> <span>{{item.title}}</span>\
                               <span class="pull-right-container" v-if="item.child">\
                                   <i class="fa fa-angle-left pull-right"></i>\
                               </span>\
                           </a>\
                           <ul class="treeview-menu">\
-                              <sub-menu v-for="(item,index) in item.child"  :item="item" :index="index" :nav="nav" :navSlide="navSlide"></sub-menu>\
+                              <sub-menu v-for="(item,index) in item.child" :key="item.id" :item="item" :index="index" :setnav="setnav" :navSlide="navSlide"></sub-menu>\
                           </ul>\
                       </li>\
-                      <li v-else class="treeview">\
+                      <li v-else>\
                           <router-link :to="item.href">\
-                              <i :class="item.iconFont"></i><span>{{item.title}}{{nav[index].hasSub}}</span>\
+                              <i :class="item.iconFont"></i><span>{{item.title}}</span>\
                               <span class="pull-right-container" v-if="item.child">\
                                   <i class="fa fa-angle-left pull-right"></i>\
                               </span>\
@@ -39,23 +39,26 @@
             }
         },
         data () {
-          return {
-              nav:{}
-          };
+            return {
+                nav: this.data
+            };
         },
         methods: {
         	  navSlide: function(index){
-                  let nav=this.nav[index];
-                  nav.hasSub=!nav.hasSub;
-                  this.$set(this.nav, index, nav)
-            }
+                this.$set(this.nav[index], hasSub, !this.nav[index].hasSub)
+                console.log(this.nav);
+            },
         },
-        created(){
-            let data = this.data;
-            data.map((obj)=>{
-                obj.hasSub = false;
-            });
-            this.nav=data;
+        computed:{
+            setnav(){
+            	  let data = this.nav;
+                data.map((obj)=>{
+                    if(typeof obj.hasSub === "undefined"){
+                        obj.hasSub = false;
+                    }
+                });
+                return data;
+            }
         }
     }
 </script>
