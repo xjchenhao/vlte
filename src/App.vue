@@ -45,57 +45,12 @@
             vSidebar: Layout.sidebar,
             vSidebarMenu: Layout.sidebar.menu,
             vMain: Layout.main,
-            vFooter: Layout.footer,
+            vFooter: Layout.footer
         },
         data () {
             return {
-                sidebarMemuData: null
+                sidebarMemuData: this.$store.state.nav
             }
-        },
-        created(){
-            this.sidebarMemuData = [{
-                title:'菜单1',
-                href:'#',
-                iconFont:'fa fa-dashboard',
-                child:[{
-                    title:'二级菜单1',
-                    href:'/one'
-                },{
-                    title:'二级菜单2',
-                    href:'/two'
-                },{
-                    title:'二级菜单3',
-                    href:'/three'
-                }]
-            },{
-                title:'菜单2',
-                href:'#',
-                iconFont:'fa fa-dashboard',
-                child:[{
-                    title:'二级菜单1',
-                    href:'/a'
-                },{
-                    title:'二级菜单2',
-                    href:'/b'
-                },{
-                    title:'二级菜单3',
-                    href:'#',
-                    child:[{
-                        title:'三级菜单1',
-                        href:'/aa'
-                    },{
-                        title:'三级菜单2',
-                        href:'/bb'
-                    },{
-                        title:'三级菜单3',
-                        href:'/cc'
-                    }]
-                }]
-            },{
-                title:'菜单3',
-                href:'/other',
-                iconFont:'fa fa-dashboard'
-            }];
         }
     }
 </script>
