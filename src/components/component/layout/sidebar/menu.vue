@@ -42,13 +42,13 @@
                             _this.$set(qq, Number(abc), result);
                             this.isActive = result.hasSub;
                         } else {
-                            hash[0]=Number(hash[0]);
+                            hash[0] = Number(hash[0]);
                             let qq = this.nav;
 
-                            qq[hash[0]].hasSub=!qq[hash[0]].hasSub;
+                            qq[hash[0]].hasSub = !qq[hash[0]].hasSub;
 
                             this.isActive = qq[hash[0]].hasSub;
-                            _this.$set(_this.nav,hash[0], qq[hash[0]]);
+                            _this.$set(_this.nav, hash[0], qq[hash[0]]);
                         }
                     }
                 },
@@ -90,9 +90,10 @@
             };
         },
         created(){
-            let _this = this;
             let data = this.data;
-            let abc = function (arr, hash) {
+
+            // 给各菜单层级增加，表示对象位置的hash和展开状态。
+            let addAttr = function (arr, hash) {
 
                 arr.map(function (obj, index) {
                     obj.hasSub = false;
@@ -110,16 +111,17 @@
                     obj.hash = hash.join('.');
 
                     if (obj.child) {
-                        abc(obj.child, obj.hash);
+                        addAttr(obj.child, obj.hash);
                     }
 
                     hash.pop();
                 });
             };
 
-            abc(data);
+            addAttr(data);
 
-//            this.nav = data;
+
+
             this.nav = Object.assign({}, this.nav, data)
         }
     }
