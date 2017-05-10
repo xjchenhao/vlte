@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '@/components/index'
-import hello from '@/components/hello'
+import about from '@/components/about'
 import tables from '@/components/tables'
 import pagination from '@/components/pagination'
 
@@ -16,9 +16,9 @@ export default new Router({
             component: index
         },
         {
-            path: '/hello',
-            name: 'hello',
-            component: hello
+            path: '/about',
+            name: 'about',
+            component: about,
         },
         {
             path: '/tables',

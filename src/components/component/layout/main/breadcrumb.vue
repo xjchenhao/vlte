@@ -5,34 +5,58 @@
             <small>preview of simple tables</small>
         </h1>
         <ol class="breadcrumb">
-            <!--<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>-->
-            <!--<li><a href="#">Tables</a></li>-->
-            <!--<li class="active"><span>Simple</span></li>-->
-            <!--<li v-for="route in matchedRoutes"-->
-                <!--:class="{ 'active': $index === matchedRoutes.length - 1 }">-->
-                <!--<span v-if="$index === matchedRoutes.length - 1">-->
-                  <!--{{ route.handler.title }}-->
-                <!--</span>-->
-                <!--<a v-else v-link="route.handler.fullPath">-->
-                  <!--{{ route.handler.title }}-->
-                <!--</a>-->
-            <!--</li>-->
+            <router-link tag="li" to="/"><a><i class="fa fa-dashboard"></i>Home</a></router-link>
+            <realbread v-for="(item,index) in bread" :key="item.id" :item="item" :index="index" :len="bread.length"></realbread>
         </ol>
     </section>
 </template>
 
 <script>
+  import Vue from 'vue';
   export default {
   	  name:"breadcrumb",
       data (){
           return {
-            matchedRoutes : [
-            	"tables","pagination"
-            ]
-          };
+          	  bread: [],
+              nav : this.$store.state.nav
+          }
       },
-      mounted(){
-        //console.log(this.$route);
+      components:{
+          realbread:{
+              name: 'realbread',
+              props: ['item','index','len'],
+              template:'\
+                  <li v-if="index<len-1"><span>{{item}}</span></li>\
+                  <li v-else class="active"><span>{{item}}</span></li>'
+          }
+      },
+      methods:{
+      	  //查找当前路由面包屑信息
+      	  searchNav: function(nav){
+      	  	  let _this = this;
+              let current = this.$route.path.toLowerCase();
+              for(let i=0;i<nav.length;i++){
+                let item = nav[i];
+                _this.$data.bread.push(item.title);
+                if(item.href.toLowerCase() === current){
+                  console.log(_this.$data.bread);
+                }else if(item.child && item.child instanceof Array){
+                  _this.searchNav(item.child);
+                }
+                _this.$data.bread.pop();
+              }
+          },
+      },
+      created(){
+          this.searchNav(this.nav);
+          console.log(this.$data.bread)
+      },
+      watch: {
+          '$route': function(){
+          	  //清除上次路由面包屑信息
+              this.$data.bread = [];
+              this.searchNav(this.nav);
+          }
       }
   }
 </script>
