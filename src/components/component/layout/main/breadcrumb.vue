@@ -17,7 +17,7 @@
       data (){
           return {
           	  bread: [],
-              nav : this.$store.state.nav
+              nav : this.$store.state.slideMenu
           }
       },
 //      components:{
@@ -72,8 +72,3 @@
       }
   }
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-
-</style>

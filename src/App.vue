@@ -49,7 +49,7 @@
         },
         data () {
             return {
-                sidebarMemuData: this.$store.state.nav
+                sidebarMemuData: this.$store.state.slideMenu
             }
         }
     }
