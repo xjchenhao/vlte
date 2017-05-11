@@ -4,9 +4,8 @@
             Simple Tables
             <small>preview of simple tables</small>
         </h1>
-        <ol class="breadcrumb">
-            <router-link tag="li" to="/"><a><i class="fa fa-dashboard"></i>Home</a></router-link>
-            <realbread v-for="(item,index) in bread" :key="item.id" :item="item" :index="index" :len="bread.length"></realbread>
+        <ol class="breadcrumb" id="breadcrumb">
+            <!--<realbread v-for="(item,index) in bread" :key="item.id" :item="item" :index="index" :len="bread.length"></realbread>-->
         </ol>
     </section>
 </template>
@@ -21,15 +20,15 @@
               nav : this.$store.state.nav
           }
       },
-      components:{
-          realbread:{
-              name: 'realbread',
-              props: ['item','index','len'],
-              template:'\
-                  <li v-if="index<len-1"><span>{{item}}</span></li>\
-                  <li v-else class="active"><span>{{item}}</span></li>'
-          }
-      },
+//      components:{
+//          realbread:{
+//              name: 'realbread',
+//              props: ['item','index','len'],
+//              template:'\
+//                  <li v-if="index<len-1"><span>{{item}}</span></li>\
+//                  <li v-else class="active"><span>{{item}}</span></li>'
+//          }
+//      },
       methods:{
       	  //查找当前路由面包屑信息
       	  searchNav: function(nav){
@@ -39,17 +38,30 @@
                 let item = nav[i];
                 _this.$data.bread.push(item.title);
                 if(item.href.toLowerCase() === current){
-                  console.log(_this.$data.bread);
+                  _this.renderBread(_this.$data.bread);
                 }else if(item.child && item.child instanceof Array){
                   _this.searchNav(item.child);
                 }
                 _this.$data.bread.pop();
               }
+              return nav;
           },
+          //渲染当前路由面包屑
+          renderBread: function(curBread){
+              let breadcrumb = document.getElementById('breadcrumb');
+              let html = '<li><a href="/"><i class="fa fa-dashboard"></i>Home</a></li>';
+              curBread.forEach(function(value,index){
+              	  if(index == curBread.length-1){
+                    html += '<li class="active"><span>'+value+'</span></li>';
+                  }else{
+                    html += '<li><span>'+value+'</span></li>';
+                  }
+              });
+              breadcrumb.innerHTML = html;
+          }
       },
-      created(){
+      mounted(){
           this.searchNav(this.nav);
-          console.log(this.$data.bread)
       },
       watch: {
           '$route': function(){

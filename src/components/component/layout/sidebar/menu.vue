@@ -18,7 +18,7 @@
         props: ['item','navSlide'],
         template: '\
                       <li v-if="item.child">\
-                          <a @click.stop="navSlide($event)" href="javascript:;">\
+                          <a @click.self="navSlide($event)" href="javascript:;">\
                               <i :class="item.iconFont"></i> <span>{{item.title}}</span>\
                               <span class="pull-right-container" v-if="item.child">\
                                   <i class="fa fa-angle-left pull-right"></i>\
