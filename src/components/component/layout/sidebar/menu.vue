@@ -25,10 +25,10 @@
                     }
                 },
                 methods: {
-                    navSlide: function (index) {
+                    navSlide: function () {
                         let _this = this;
                         let result = this.nav;
-                        let hash = String(index).split('.');
+                        let hash = this.hashArr;
 
                         if (hash.length > 1) {
                             let abc = '';
@@ -50,11 +50,37 @@
                             this.isActive = qq[hash[0]].hasSub;
                             _this.$set(_this.nav, hash[0], qq[hash[0]]);
                         }
+                    },
+                    jumpNav(){
+                        let _this = this;
+                        let result = this.nav;
+                        let hash = this.hashArr;
+
+                        if (hash.length > 1) {
+                            let abc = '';
+                            let qq = '';
+                            hash.forEach(function (val) {
+                                abc = val;
+                                qq = result[val];
+                                result = result[val].child || result[val];
+                            });
+                            result.hasSub = false;
+                            _this.$set(qq, Number(abc), result);
+                            this.isActive = result.hasSub;
+                        } else {
+                            hash[0] = Number(hash[0]);
+                            let qq = this.nav;
+
+                            qq[hash[0]].hasSub = false;
+
+                            this.isActive = qq[hash[0]].hasSub;
+                            _this.$set(_this.nav, hash[0], qq[hash[0]]);
+                        }
                     }
                 },
                 template: '\
                       <li v-if="item.child" :class="[{active: isActive}]">\
-                          <a href="javascript:;" @click.stop.prevent="navSlide(item.hash)">\
+                          <a href="javascript:;" @click.stop.prevent="navSlide">\
                               <i :class="item.iconFont"></i> <span>{{item.title}}{{isActive}}</span>\
                               <span class="pull-right-container" v-if="item.child">\
                                   <i class="fa fa-angle-left pull-right"></i>\
@@ -64,7 +90,7 @@
                               <sub-menu v-for="(item,index) in item.child"  :item="item" :index="index" :nav="nav" :hash="item.hash"></sub-menu>\
                           </ul>\
                       </li>\
-                      <li v-else :class="[{active: isActive,treeview:true}]">\
+                      <li v-else :class="[{active: isActive,treeview:true}]" @click.stop.prevent="jumpNav">\
                           <router-link :to="item.href">\
                               <i :class="item.iconFont"></i><span>{{item.title}}{{isActive}}</span>\
                               <span class="pull-right-container" v-if="item.child">\
@@ -81,7 +107,7 @@
                     let i = 0;
                     if (length > 1) {
                         hash.forEach(function (val) {
-                            if (i < length-1) {
+                            if (i < length - 1) {
                                 result = result[val].child;
                                 i++
                             } else {
@@ -160,16 +186,18 @@
                 }
             };
 
-            urlFindHash(data);
+            if (location.pathname != '/') {
+                urlFindHash(data);
 
-            // 设置展开后的nav值
-            {
-                let result = data;
-                let urlHash = this.urlHash.split('.');
-                urlHash.forEach(function (val) {
-                    result[val].hasSub = true;
-                    result = result[val].child || result[val];
-                });
+                // 设置展开后的nav值
+                {
+                    let result = data;
+                    let urlHash = this.urlHash.split('.');
+                    urlHash.forEach(function (val) {
+                        result[val].hasSub = true;
+                        result = result[val].child || result[val];
+                    });
+                }
             }
 
             _this.nav = Object.assign({}, _this.nav, data)
